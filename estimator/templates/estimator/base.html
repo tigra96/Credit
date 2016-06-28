@@ -1,0 +1,29 @@
+    {% load staticfiles %}
+    <html>
+        <head>
+            <title>Course project</title>
+            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+            <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+            <link rel="stylesheet" href="{% static 'css/estimator.css' %}">
+        </head>
+        <body>
+            <div class="page-header">
+                <a href="{% url 'estimator.views.post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+                <h1><a href="/">Введите данные о себе:</a></h1>
+				<form action="/your-name/" method="post">
+					<label for="your_name">Your name: </label>
+					<input id="your_name" type="text" name="your_name" value="{{ current_name }}">
+					<input type="submit" value="OK">
+				</form>
+            </div>
+            <div class="content container">
+                <div class="row">
+                    <div class="col-md-8">
+                        {% block content %}
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </body>
+    </html>
