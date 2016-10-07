@@ -127,6 +127,7 @@ def estimate_login(request):
 
 	return render(request, 'estimator/login.html', {'form': form})	 
 	   
+# Админская область
 def estimate_admin(request):
 	if activation:
 		global num, num_form, surname, num_sel
