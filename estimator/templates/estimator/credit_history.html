@@ -1,0 +1,36 @@
+    {% load staticfiles %}
+    <html>
+        <head>
+            <title>Credit history</title>
+            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+            <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+            <link rel="stylesheet" href="{% static 'css/estimator.css' %}">
+        </head>
+		<body>
+
+			
+			<div id="picture"> 
+				<p><img src="../images/ch.jpg" ></p>
+			</div>
+			
+			<div id="Credit_history_text"> 
+				<p> <font size="5" color="black" face="Arial"> Кредитная история включает в себя следующие сведения о клиенте: </font> </p>
+				<p> - фамилия, имя и отчество; </p>
+				<p> - дата рождения; </p>
+				<p> - количество взятых до этого кредитов </p>
+				<p> - количество невыплаченных кредитов </p>
+				<p> - количество задержек по кредитам </p>
+				
+
+				<p> <font size="5" color="black" face="Arial"> Кредитная история формируется в несколько этапов: </font> </p>
+				<p> 1) Заемщик получает кредит в банке; </p>
+				<p> 2) Банк (с согласия заемщика) отправляет в Бюро кредитной истории (БКИ) полную информацию о кредите и заемщике: ФИО, дата рождения, место рождения, паспортные данные и данные по кредиту; </p>
+				<p> 3) БКИ отправляет в Центральный каталог кредитных историй (ЦККИ) краткие сведения о кредите и заемщике; </p>
+				<p> 4) Заемщик может получить свои данные из соответствующеего БКИ, если он знает, где формируется его кредитная история; </p>
+				<p> 5) Заемщик может узнать в ЦККИ, где хранится его кредитная история, направив туда запрос; </p>
+				<p> 6) В федеральную службу по финансовым рынкам заемщик может направить жалобы на действия БКИ. </p>
+			</div>			
+			
+        </body>
+	</html>

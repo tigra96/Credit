@@ -1,0 +1,24 @@
+﻿    {% load staticfiles %}
+    <html>
+        <head>
+            <title>Course project</title>
+            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+            <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+            <link rel="stylesheet" href="{% static 'css/estimator.css' %}">
+			{% csrf_token %}
+
+        </head>
+        <body>
+
+			<div id="return_button">
+				<a href="/" class="button"> Вернуться на главную </a>
+			</div>
+			
+			<p><font size="6" color="black" face="Miriam"> Сожалеем, но бюро кредитных историй не смогло предоставить информацию 
+																	о вашей кредитной истории. </font></p>
+
+			<p><font size="6" color="black" face="Miriam"> Возможно вас просто нет в базе, или  
+																	попробуйте <a href="/enter" class="button_1">заново ввести данные. </a> </font></p>																	
+        </body>
+    </html>

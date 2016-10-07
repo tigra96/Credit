@@ -1,14 +1,19 @@
-    {% extends 'estimator/base.html' %}
-
-    {% block content %}
+	{% load staticfiles %}
     <html>
-		<body style='background: url(img.jpeg) '>
-		</body>
+	    <head>
+            <title>Bad result</title>
+            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+            <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+            <link rel="stylesheet" href="{% static 'css/estimator.css' %}">
+        </head>
         <body>
 
-            <div class="page-header">
-                <h1><a href="/">Congritulations :)</a></h1>
-            </div>
+			<div id="return_button">
+				<a href="/" class="button"> Вернуться на главную </a>
+			</div>
+			
+			<p><font size="8" color="black" face="Cooper black"> У вас хорошие шансы на получение кредита. </font></p>
+
         </body>
     </html>
-    {% endblock %}

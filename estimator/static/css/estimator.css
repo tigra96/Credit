@@ -1,8 +1,201 @@
 h1 a {
-    color: #4F6870;
+    color: #FFFFFF;
 	font-family: 'Lobster';
 }
 
-body {
-    padding-left: 15px;
+b {
+    color: #868679;
+	font-family: 'Cooper black';
 }
+
+.scroll_bar {
+	overflow-y: scroll;
+	
+}
+
+.layer {
+	overflow: scroll; /* Добавляем полосы прокрутки */
+	width: 450px; /* Ширина блока */
+	height: 600px; /* Высота блока */
+	padding: 5px; /* Поля вокруг текста */
+	border: solid 1px black; /* Параметры рамки */
+	margin: -620px 850px;
+}
+
+.layer2 {
+	overflow: scroll; /* Добавляем полосы прокрутки */
+	width: 840px; /* Ширина блока */
+	height: 300px; /* Высота блока */
+	padding: 0px; /* Поля вокруг текста */
+	border: solid 1px black; /* Параметры рамки */
+	margin: 20px 0px;
+	position: relative;
+}
+
+.layer3 {
+	overflow: scroll; /* Добавляем полосы прокрутки */
+	width: 840px; /* Ширина блока */
+	height: 200px; /* Высота блока */
+	padding: 0px; /* Поля вокруг текста */
+	border: solid 1px black; /* Параметры рамки */
+	margin: 20px 0px;
+	position: relative;
+}
+
+TD, TH {
+    padding: 3px; /* Поля вокруг содержимого таблицы */
+    border: 1px solid black; /* Параметры рамки */
+}
+
+
+body {
+	padding-left: 15px;
+    background: white url("images/images.jpg") no-repeat right bottom;
+	width: auto;
+	height: 100%;
+	
+    position: fixed;
+	top: -10;
+	left: 0;
+
+	background-size: 100%;
+}
+
+#adminButton {
+	width:150px;
+	margin: 10px 10px;
+
+}
+
+#return_button {
+	width:200px;
+	margin: 10px 10px;
+
+}
+
+
+.button {	
+	color: #fff;
+	padding: 5;
+}
+
+
+
+.button:hover {
+	color: EB1115;
+}
+
+.button1 {	
+	color: #010101;
+	padding: 5;
+}
+
+.button1:hover {
+	color: EB1115;
+}
+
+#Text {
+	width:400px;
+	margin: 10px 10px;	
+	color: EB1115;
+}
+
+#Text2 {
+	width:400px;
+	margin: 10px 10px;	
+	color: EB1115;
+}
+
+#message{
+	width:400;
+	margin: 10px 10px;
+}
+
+
+#ans_text {
+	width:400px;
+	margin: 10px 10px;	
+	color: #000000;
+}
+
+#warnning_text {
+	margin: 0px 00px;		
+}
+
+#content {
+    background: rgba(0,0,0,0.15);
+    border-radius: 6px;
+    margin: 0 0 20px;
+    overflow: hidden;
+    padding: 8px 4px 0 4px;
+    position: relative;
+    z-index: 2;
+}
+
+#layout-main-content {
+    float: right;
+    margin: 0;
+    width: 442px;
+}
+
+.calculator-descr-text {
+    margin-right: 100;
+	color: #000000;
+}
+
+#picture{
+    background: white url("images/ch.jpg") no-repeat ;
+	width: 520px;
+	height: 80%;	
+	margin: 50px 000px;
+}
+
+#Credit_history_text{
+	margin: -550px 600px;	
+	width: 600px;
+}
+
+
+#hist1{
+    background: white url("images/hist1.jpg") no-repeat ;
+	width: 400px;
+	height: 250px;	
+	margin: -220px 0px;
+}
+
+#hist2{
+    background: white url("images/hist2.jpg") no-repeat ;
+	width: 400px;
+	height: 250px;	
+	margin: -250px 400px;
+}
+
+#hist1_text{
+	margin: 250px 0px;	
+	width: 400;
+}
+
+#hist2_text{
+	margin: 230px 10px;	
+	width: 400;
+}
+
+#hists_text{
+	margin: 50px 850px;	
+	width: 420;	
+}
+
+
+.btn_menu {
+	#background-color: Transparent;
+	margin: 20px 0px;	
+	width: 205;
+	padding: .5em 1em .55em; /* размер */
+	text-shadow: 0 1px 1px rgba(0,0,0,.3); /* яркость цвета */	
+	-webkit-border-radius: .5em; /* стиль */
+}
+
+#search-form {
+	margin: 20px 0px;	
+}
+

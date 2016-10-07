@@ -1,0 +1,63 @@
+﻿    {% load staticfiles %}
+    <html>
+        <head>
+            <title>Home page</title>
+            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+            <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+            <link rel="stylesheet" href="{% static 'css/estimator.css' %}">
+        </head>
+
+		<body>	
+			<p> </p>
+			
+			<p><font size="3" color="black" face="Arial"> Для оценки предсказания получения кредита используется модель - случайный лес. Основную информацию о данной модели можно получить </font> <a href="https://ru.wikipedia.org/wiki/Random_forest"> <font size="3" color="blue" face="Arial">на wikipedia.org </font></a> </p>
+
+			<table border="1">
+			<caption>Для корректной работы модели использовались следующие признаки:</caption>
+			<tr>
+			<th> Признак </th>
+			<th> Корелляция Пирсона </th>
+			</tr>
+				<tr><td> зарплата заемщика </td><td> 0.716122 </td></tr>
+				<tr><td> возраст заемщика </td><td> 0.565728 </td></tr>
+				<tr><td> опыт работы заемщика </td><td> 0.402844 </td></tr>
+				<tr><td> сумма кредита </td><td> -0.479648 </td></tr>
+				<tr><td> предполагаемый срок выплаты кредита </td><td> -0.007684 </td></tr>
+				<tr><td> количество предыдущих кредитов заемщика </td><td> 0.788442 </td></tr>
+				<tr><td> количество непогашенных заемщиком кредитов </td><td> -0.492688 </td></tr>
+				<tr><td> количество задержек заемщиком по кредитам </td><td> -0.597091 </td></tr>
+			</table>	
+			<p> </p>
+			<p> Из этой информации можно сделать вывод, что наиболее важными признаками явяется кредитная история заемщика и его зарплата. </p>
+			<p> </p>
+			<p> Для  оценивания информации о целевой аудитории нашего банка представляем следующую информацию: </p>
+			
+			<div id="hists_text"> 
+				<p> <font size="4" color="black" face="Arial"> Из гистограмм видно, что зарплата людей, оставляющих заявку на получение кредита в банке как правило составляет порядка 50 000р. В то же время, средняя зарплата людей, получивших кредит в банке составляет порядка 100 000р.  </font></p>
+			</div>	
+
+			<div id="hist1"> 
+				<p><img src="../images/hist1.jpg"></p>
+			</div>		
+			<div id="hist2"> 
+				<p><img src="../images/hist2.jpg"></p>
+				<div id="hist2_text"> 
+					<p> <font size="2" color="black" face="Arial"> Зарплата людей получивших кредит в банке </font></p>
+				</div>	
+			</div>
+			
+			<div id="hist1_text"> 
+				<p> <font size="2" color="black" face="Arial"> Зарплата людей желающих получить кредит в банке </font></p>
+			</div>
+			
+			<div id="hist2_text"> 
+				<p> <font size="2" color="black" face="Arial"> Зарплата людей получивших кредит в банке </font></p>
+			</div>			
+			
+			
+
+			
+			
+		</body>
+	</html> 

@@ -1,45 +1,52 @@
 from django.db import models
 from django.utils import timezone
+from django.core.validators import MaxValueValidator
 
 # Create your models here.
 class Estimate(models.Model):
 	id = models.AutoField(primary_key=True)
-	salary = models.IntegerField()	
-	age = models.IntegerField()
-	summ = models.IntegerField()	
-	time = models.IntegerField()
-	experience = models.IntegerField()
-	history = models.IntegerField()
-	current = models.IntegerField()
-	outstanding = models.IntegerField()
+	Name = models.CharField(max_length=20, null=True)
+	Second_Name = models.CharField(max_length=20, null=True)
+	Last_Name = models.CharField(max_length=20, null=True)
+	birth = models.DateField(blank=True, null=True)
+	passport = models.PositiveIntegerField(null=True)
+	Amount = models.PositiveIntegerField(null=True)
+	Salary = models.PositiveIntegerField(null=True)
+	Work_Experience = models.PositiveIntegerField(null=True)
+	Repayment_Period = models.PositiveIntegerField(null=True)
+	
+class LogIn(models.Model):
+	Username = models.CharField(max_length=20)
+	Password = models.CharField(max_length=20)
 
-
+class surname(models.Model):
+	surname  = models.CharField(max_length=20)
 	
 		
-class Clients(models.Model):
-	author = models.ForeignKey('auth.User')
-	result = models.BooleanField()
-	first_name = models.CharField(max_length=20)
-	last_name = models.CharField(max_length=20)
-	email = models.EmailField('e-mail', blank=True)
-	age = models.IntegerField()
-	salary = models.IntegerField()
-	childrens = models.BooleanField()
-	job = models.BooleanField()
-	experience = models.IntegerField(blank=True)
-	amount_of_credit = models.IntegerField()
-	payout_period = models.IntegerField()
-	credits_history = models.IntegerField()
-	number_of_current_credits = models.IntegerField()
-	number_of_outstanding_credits = models.IntegerField()
-	created_date = models.DateTimeField(default=timezone.now)
-	published_date = models.DateTimeField(blank=True, null=True)
+class client_info(models.Model):
+	Id = models.AutoField(primary_key=True)
+	id_author = models.IntegerField(null=True)
+	second_name = models.CharField(max_length=20, null=True)
+	first_name = models.CharField(max_length=20, null=True)
+	third_name = models.CharField(max_length=20, null=True)
+	birth = models.DateField(default=timezone.now)
+	passport = models.IntegerField(null=True)
+	email = models.EmailField(blank=True, null=True)
 	
-	def __unicode__(self):
-		return u'%s %s' % (self.first_name, self.last_name)
-"""
-	def publish(self):
-		self.published_date = timezone.now()
-		self.save()
-"""		
+	
+class client_history(models.Model):
+	Id = models.AutoField(primary_key=True)
+	Id_client = models.IntegerField(blank=True)
+	start_credit = models.DateField(blank=True, null=True)
+	finish_credit = models.DateField(blank=True, null=True)
+	amount = models.IntegerField(blank=True)
+	number_of_delays = models.IntegerField(blank=True)
+	status = models.CharField(max_length=20, null=True)
+	
+class client_job(models.Model):
+	Id = models.AutoField(primary_key=True)
+	id_client = models.IntegerField(blank=True)
+	work_place = models.CharField(max_length=20, null=True)
+	salary = models.IntegerField(null=True)
+	experience = models.IntegerField(null=True)
 

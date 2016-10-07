@@ -1,13 +1,18 @@
-    {% extends 'estimator/base.html' %}
-
-    {% block content %}
+﻿	{% load staticfiles %}
     <html>
-
+	    <head>
+            <title>Bad result</title>
+            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+            <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+            <link rel="stylesheet" href="{% static 'css/estimator.css' %}">
+        </head>
         <body>
+			<div id="return_button">
+				<a href="/" class="button"> Вернуться на главную </a>
+			</div>
+			
+			<p><font size="8" color="black" face="Cooper black"> Сожалеем, но наш банк не может выдать вам кредит. </font></p>
 
-            <div class="page-header">
-                <h1><a href="/"> I'm so sorry, but we couldn't give u a credit ;( </a></h1>
-            </div>
         </body>
     </html>
-    {% endblock %}

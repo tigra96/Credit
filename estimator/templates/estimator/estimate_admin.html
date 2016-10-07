@@ -1,0 +1,185 @@
+    {% load staticfiles %}
+    <html>
+        <head>
+            <title> Admin </title>
+            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+            <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+            <link rel="stylesheet" href="{% static 'css/estimator.css' %}">
+			{% csrf_token %}
+
+        </head>
+        <body class="scroll_bar">
+			<div id="return_button">
+				<a href="/" class="button"> Вернуться на главную </a>
+			</div>  
+
+
+	
+					
+			<div class="layer2">
+
+				<table>
+					<tr>
+						<th> id   </th>
+						<th> Фамилия   </th>
+						<th> Имя   </th>
+						<th> Отчество   </th>
+						<th> Дата рождения   </th>
+						<th> Номер паспорта   </th>						
+						<th> email   </th>
+						<th> Место работы </th>
+						<th> Зарплата   </th>
+						<th> Опыт работы   </th>
+						<th> Удалить клиента </th>
+					</tr>
+						{% for job, post in posts %}
+						<tr>
+						<form action="" method="post">
+							{% csrf_token %}
+							<td>  <input type="Submit" name="id_sub" value={{ post.Id }}> </input>  </td>
+						</form>
+
+							<td>  {{ post.second_name }}  </td>							
+							<td>  {{ post.first_name }}  </td>
+							<td>  {{ post.third_name }}  </td>
+							<td>  {{ post.birth }}  </td>						
+							<td>  {{ post.passport }}  </td>
+							<td>  {{ post.email }}  </td>
+							<td>  {{ job.work_place }}  </td>	
+							<td>  {{ job.salary }}  </td>	
+							<td>  {{ job.experience }}  </td>		
+						<form action="" method="post">
+							{% csrf_token %}
+							<td>  <input type="Submit" name="id_del" value={{ post.Id }}> </input>  </td>
+						</form>						
+						</tr>
+							{% if num == post.Id %}
+
+								<table>
+									<tr>
+										<th> Дата выдачи кредита    </th>
+										<th> Дата погашения кредита   </th>
+										<th> Сумма кредита   </th>
+										<th> Количество задержек   </th>
+										<th> Статус  </th>						
+									</tr>
+								{% for hist in history %}
+								<tr>						
+									<td>  {{ hist.start_credit }}  </td>
+									<td>  {{ hist.finish_credit }}  </td>
+									<td>  {{ hist.amount }}  </td>						
+									<td>  {{ hist.number_of_delays }}  </td>
+									<td>  {{ hist.status }}  </td>	
+						
+								</tr>									
+								{% endfor %}
+							{% endif %}
+							
+						{% endfor %}
+								
+				</table>			
+			</div>
+			
+			<form method="POST" name="id_sur" class="post-form">
+					{% csrf_token %}
+					{{ SurnameForm.as_table }}								
+				<button type="submit" class="save btn btn-default"> Узнать </button>
+			</form>
+			
+			<div class="layer3">
+
+				<table>
+					<tr>
+						<th> id   </th>
+						<th> Фамилия   </th>
+						<th> Имя   </th>
+						<th> Отчество   </th>
+						<th> Дата рождения   </th>
+						<th> Номер паспорта   </th>						
+						<th> email   </th>
+					</tr>
+						{% for select in Selected_Client %}
+						<tr>
+						<form action="" method="post">
+							{% csrf_token %}
+							<td>  <input type="Submit" name="id_sel" value={{ select.Id }}> </input>  </td>
+						</form>
+
+							<td>  {{ select.second_name }}  </td>							
+							<td>  {{ select.first_name }}  </td>
+							<td>  {{ select.third_name }}  </td>
+							<td>  {{ select.birth }}  </td>						
+							<td>  {{ select.passport }}  </td>
+							<td>  {{ select.email }}  </td>
+						</tr>
+							{% if num_sel == select.Id %}
+
+								<table>
+									<tr>
+										<th> Дата выдачи кредита    </th>
+										<th> Дата погашения кредита   </th>
+										<th> Сумма кредита   </th>
+										<th> Количество задержек   </th>
+										<th> Статус  </th>						
+									</tr>
+								{% for sel_hist in sel_history %}
+								<tr>						
+									<td>  {{ sel_hist.start_credit }}  </td>
+									<td>  {{ sel_hist.finish_credit }}  </td>
+									<td>  {{ sel_hist.amount }}  </td>						
+									<td>  {{ sel_hist.number_of_delays }}  </td>
+									<td>  {{ sel_hist.status }}  </td>	
+						
+								</tr>									
+								{% endfor %}
+							{% endif %}
+							
+						{% endfor %}
+								
+				</table>			
+			</div>
+
+
+	
+			
+			<div class="layer">
+			<h1> Добавить информацию </h1>
+			<form action="" method="post">
+				{% csrf_token %}
+				<input type="Submit" class="btn_menu" name="add_client" value="О клиенте"></input>
+				<input type="Submit" class="btn_menu" name="add_credit" value="О кредите"></input>
+			</form>		
+			
+			
+			{% if num_form == 2 %}	
+	
+				<form method="POST" class="post-form">
+					<table> 
+						{% csrf_token %}
+						{{ form_hist.as_table }}								
+					</table>
+					<button type="submit" class="save btn btn-default"> Внести </button>
+				</form>		
+			
+			{% endif %}
+			{% if num_form == 1 %}
+
+				<form method="POST" class="post-form">
+					<table> 
+						{% csrf_token %}
+						{{ form_info.as_table }}	
+						{{ form_job.as_table }}
+					</table>
+					<button type="submit" class="save btn btn-default"> Внести </button>
+				</form>		
+		
+			{% endif %}
+			<div id="message">
+				{% if message %}
+					<h1> {{ message}}  </h1>
+				{% endif %}
+			</div>
+			</div>
+        </body>
+    </html>

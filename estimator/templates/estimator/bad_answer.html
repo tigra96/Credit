@@ -1,0 +1,21 @@
+﻿    {% load staticfiles %}
+    <html>
+        <head>
+            <title> Bad answer</title>
+            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+            <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+            <link rel="stylesheet" href="{% static 'css/estimator.css' %}">
+			{% csrf_token %}
+
+        </head>
+        <body>
+           
+            <div class="page-header">
+				<h1>  Сожалеем, но бюро креитных историй не смогло предоставить информацию о вашей кредитной истории </h1>
+                
+            </div>
+			<h1><a href="/"> Нажмите, чтобы вернуться на стартовую страницу </a></h1>
+
+        </body>
+    </html>

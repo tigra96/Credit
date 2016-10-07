@@ -1,4 +1,4 @@
-    {% load staticfiles %}
+﻿    {% load staticfiles %}
     <html>
         <head>
             <title>Course project</title>
@@ -6,24 +6,25 @@
             <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
             <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
             <link rel="stylesheet" href="{% static 'css/estimator.css' %}">
+			{% csrf_token %}
+
         </head>
         <body>
-            <div class="page-header">
-                <a href="{% url 'estimator.views.post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-                <h1><a href="/">Введите данные о себе:</a></h1>
-				<form action="/your-name/" method="post">
-					<label for="your_name">Your name: </label>
-					<input id="your_name" type="text" name="your_name" value="{{ current_name }}">
-					<input type="submit" value="OK">
-				</form>
-            </div>
-            <div class="content container">
-                <div class="row">
-                    <div class="col-md-8">
-                        {% block content %}
-                        {% endblock %}
-                    </div>
-                </div>
-            </div>
+			<div id="return_button">
+				<a href="/" class="button"> Вернуться на главную </a>
+			</div>           
+			<h1>Заполните информацию о себе </h1>
+			<form method="POST" class="post-form">
+				<table> 
+					{% csrf_token %}
+					{{ form.as_table }}								
+				</table>
+				<button type="submit" class="save btn btn-default"> Узнать </button>
+			</form>
+
+			{% if text %}
+				<h1> {{ text}}  </h1>
+			{% endif %}
+			
         </body>
     </html>
