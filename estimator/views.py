@@ -17,7 +17,6 @@ num_form = 0
 num_sel = 0
 surname = ""
 
-# Функция для построения случайного леса
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 
@@ -28,7 +27,7 @@ def Classifier(test):
         rows = cur.fetchall()
 		
     data = pd.DataFrame(rows)
-    RFClassifier = RandomForestClassifier(n_estimators=500)
+    RFClassifier = RandomForestClassifier(n_estimators=100, n_jobs=-1)
     
     y = data[1]
     data.drop([0, 1], axis=1, inplace=True)
@@ -47,6 +46,7 @@ def post_new(request):
 
 	form = RequestForm(request.POST)
 	text = ""
+	
 	if request.method == "POST":
 		if form.is_valid():			
 			Second_Name = form.cleaned_data['Second_Name']		
@@ -63,12 +63,9 @@ def post_new(request):
 			
 			with con:
 				cur = con.cursor()    
-				cur.execute("Select Id FROM BCH_Personal_info WHERE second_Name=? and first_Name=? and third_name=? and birth=? and passport=?", 
-							[str(Second_Name).upper(), str(Name).upper(), str(Last_Name).upper(), birth, passport])         
+				cur.execute("Select Id FROM BCH_Personal_info WHERE passport=?", [passport])         
 				rows = cur.fetchall()
-			file_obj = open('text.txt', 'w')
-			file_obj.write("\n".join([str(Second_Name).upper(), str(Name).upper(), str(Last_Name).upper(), str(birth), str(passport)]))
-			file_obj.close()
+
 			if len(rows) == 0:
 				text = "Сожалеем, но бюро кредитных историй не смогло предоставить информацию о вашей кредитной истории!"	
 			else:
@@ -127,7 +124,6 @@ def estimate_login(request):
 
 	return render(request, 'estimator/login.html', {'form': form})	 
 	   
-# Админская область
 def estimate_admin(request):
 	if activation:
 		global num, num_form, surname, num_sel
@@ -141,6 +137,7 @@ def estimate_admin(request):
 			form_hist = ClientsHistForm(request.POST)	
 			form_job = ClientsJobForm(request.POST)
 			form_surname = SurnameForm(request.POST)
+			
 			if form_info.is_valid() and form_job.is_valid():
 				second_name = form_info.cleaned_data['second_name']
 				first_name = form_info.cleaned_data['first_name']
@@ -151,10 +148,12 @@ def estimate_admin(request):
 				work_place = form_job.cleaned_data['work_place']
 				salary = form_job.cleaned_data['salary']
 				experience = form_job.cleaned_data['experience']	
+				
 				with con:
 					cur = con.cursor()    
 					cur.execute("Select passport FROM black_list")         
 					rows = cur.fetchall()
+					
 				if (int(passport),) in rows:
 					message = "Клиент с такими паспортными данными находится в черном списке."	
 				else:
@@ -190,7 +189,7 @@ def estimate_admin(request):
 				client_info.objects.filter(passport=int(passport)).values_list('Id', flat=True)[0]
 				
 				
-				if client_info.objects.filter(passport=int(passport)).values_list('Id', flat=True) != []:
+				if client_info.objects.filter(passport=int(passport)).values_list('Id', flat=True):
 					client_history.objects.create(
 												  Id_client=client_info.objects.filter(passport=int(passport)).values_list('Id', flat=True)[0], 
 												  start_credit=start_credit, 
@@ -237,12 +236,22 @@ def estimate_admin(request):
 
 		
 		history = client_history.objects.filter(Id_client=num)
-		file_obj = open('text.txt', 'w')
-		file_obj.write(surname)
-		file_obj.close()
 
-
-		return render(request, 'estimator/estimate_admin.html', {'posts': zip(client_job.objects.all(), client_info.objects.all()), 'form_hist': form_hist, 'form_info': form_info, 'form_job': form_job, 'num': num, 'history': history, 'num_form': num_form, 'message': message, 'SurnameForm': form_surname, 'Selected_Client': client_info.objects.filter(second_name=surname), 'sel_history': client_history.objects.filter(Id_client=num_sel), 'num_sel': num_sel})
+		return render(request, 'estimator/estimate_admin.html', {
+																 'posts': zip(client_job.objects.all(), client_info.objects.all()), 
+																 'form_hist': form_hist, 
+																 'form_info': form_info, 
+																 'form_job': form_job, 
+																 'num': num, 
+																 'history': history, 
+																 'num_form': num_form, 
+																 'message': message, 
+																 'SurnameForm': form_surname, 
+																 'Selected_Client': client_info.objects.filter(second_name=surname), 
+																 'sel_history': client_history.objects.filter(Id_client=num_sel), 
+																 'num_sel': num_sel
+																})
+																
 	else:
 		return redirect('estimator.views.estimate_login')
 
