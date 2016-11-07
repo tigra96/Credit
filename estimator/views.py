@@ -17,25 +17,6 @@ num_form = 0
 num_sel = 0
 surname = ""
 
-import pandas as pd
-from sklearn.ensemble import RandomForestClassifier
-
-def Classifier(test):
-    with con:    
-        cur = con.cursor()    
-        cur.execute("SELECT * FROM estimator_data")  
-        rows = cur.fetchall()
-		
-    data = pd.DataFrame(rows)
-    RFClassifier = RandomForestClassifier(n_estimators=100, n_jobs=-1)
-    
-    y = data[1]
-    data.drop([0, 1], axis=1, inplace=True)
-    
-    RFClassifier.fit(data, y)
-    return RFClassifier.predict(test)[0]
-
-
 
 # Create your views here.
 
@@ -79,7 +60,7 @@ def post_new(request):
 					if int(rows[i][3].split("-")[0]) > 2016:
 						current += 1
 					delays += int(rows[i][5])	
-				if (Classifier([Salary, Age, Amount, Repayment_Period, Work_Experience, len(rows), current, delays])):
+				if (1):
 					text = "Поздравляем, у вас хорошие шансы на получение кредита!"				
 				else:
 					text = "Сожалеем, но вас маловато шансов на получение кредита!"		
