@@ -1,2 +1,2 @@
-"# Course_project_DB" 
-"# course_project_Graphics" 
+Курсовой проект по БД.
+Web-сайт для кредитного скоринга
